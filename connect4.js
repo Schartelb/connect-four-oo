@@ -9,9 +9,9 @@
 // const HEIGHT = 6;
 
 class Game{
-  constructor(a,b){
-    this.WIDTH=a
-    this.HEIGHT=b
+  constructor(wide, high) {
+    this.WIDTH = wide
+    this.HEIGHT = high
     this.board=[]
     this.makeboard()
     this.makeHtmlBoard()
@@ -37,7 +37,7 @@ class Game{
         headCell.setAttribute('id', x);
         top.append(headCell);
       }
-     (HTMLboard.childElementCount>0) ? HTMLboard.innerHTML="":"" 
+      if (HTMLboard.childElementCount > 0) HTMLboard.innerHTML = ""
       
      
       HTMLboard.append(top);
@@ -102,10 +102,10 @@ class Game{
 
     
     checkForWin() {
-    const highwin=this.HEIGHT
-    const widewin=this.WIDTH
-    const winBoard=this.board
-    const winPlayer = this.currPlayer.pnum
+      const highwin = this.HEIGHT
+      const widewin = this.WIDTH
+      const winBoard = this.board
+      const winPlayer = this.currPlayer.pnum
       function _win(cells){
         // Check four cells to see if they're all color of current player
         //  - cells: list of four (y, x) cells
@@ -119,8 +119,8 @@ class Game{
             winBoard[y][x] === winPlayer
         );  //not returning actual winBoard values
       }
-      for (let y = 0; y <=this.HEIGHT ; y++) {
-        for (let x = 0; x < this.WIDTH; x++) {
+      for (let y = 0; y <= highwin; y++) {
+        for (let x = 0; x < widewin; x++) {
           // get "check list" of 4 cells (starting here) for each of the different
           // ways to win
           const horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
